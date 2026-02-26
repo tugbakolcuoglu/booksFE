@@ -33,3 +33,15 @@ export const deleteBookApi = async (id) => {
     }
     return true;
 }
+export const updateBookApi = async (id, updatedBookApi) => {
+    const response = await fetch(`${API_BASE_URL}/books/${id}`, {
+        method: "PUT",  
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedBookApi)
+    });
+    if (!response.ok) {
+        alert("Failed to update book");}
+    return await response.json();
+}

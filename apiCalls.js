@@ -2,13 +2,15 @@ const API_BASE_URL = "http://localhost:5181/api";
 export const getBooksApi = async () => {
     const response = await fetch(`${API_BASE_URL}/books`);
     if (!response.ok) {
-        alert("Failed to fetch books");}
+        alert("Failed to fetch books");
+    }
     return await response.json();
 }
 export const getBookByIdApi = async (id) => {
-    const response = await fetch(`${API_BASE_URL}/books/${id}`);  
+    const response = await fetch(`${API_BASE_URL}/books/${id}`);
     if (!response.ok) {
-        alert("Failed to fetch book details");}
+        alert("Failed to fetch book details");
+    }
     return await response.json();
 }
 export const createBookApi = async (book) => {
@@ -20,7 +22,8 @@ export const createBookApi = async (book) => {
         body: JSON.stringify(book)
     });
     if (!response.ok) {
-        alert("Failed to create book");}
+        alert("Failed to create book");
+    }
     return await response.json();
 }
 export const deleteBookApi = async (id) => {
@@ -35,13 +38,16 @@ export const deleteBookApi = async (id) => {
 }
 export const updateBookApi = async (id, updatedBookApi) => {
     const response = await fetch(`${API_BASE_URL}/books/${id}`, {
-        method: "PUT",  
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(updatedBookApi)
     });
+    console.log(response);
     if (!response.ok) {
-        alert("Failed to update book");}
+        alert("Failed to update book");
+        return;
+    }
     return await response.json();
 }
